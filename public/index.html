@@ -8,50 +8,12 @@
     body { font-family: sans-serif; padding: 2rem; }
     #output { margin-top: 2rem; }
   </style>
+  <script src="location.js"></script>
 </head>
 <body>
   <h1>Get Your Current Location & Weather</h1>
   <button onclick="getLocation()">Get Weather</button>
   <div id="output"></div>
 
-  <!-- <script>
-    const openCageKey = 'YOUR_OPENCAGE_API_KEY';
-    const openWeatherKey = 'YOUR_OPENWEATHERMAP_API_KEY';
-
-    function getLocation() {
-      if (!navigator.geolocation) {
-        document.getElementById('output').innerText = 'Geolocation is not supported by your browser.';
-        return;
-      }
-
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        try {
-          // Get City Name
-          const geoRes = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=${openCageKey}`);
-          const geoData = await geoRes.json();
-          const city = geoData.results[0].components.city || geoData.results[0].components.town || geoData.results[0].components.village || 'Unknown location';
-
-          // Get Weather
-          const weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=metric`);
-          const weatherData = await weatherRes.json();
-          const temp = weatherData.main.temp;
-          const description = weatherData.weather[0].description;
-
-          document.getElementById('output').innerHTML = `
-            <h2>Location: ${city}</h2>
-            <p><strong>Temperature:</strong> ${temp}°C</p>
-            <p><strong>Conditions:</strong> ${description}</p>
-          `;
-        } catch (err) {
-          document.getElementById('output').innerText = 'Error fetching data: ' + err.message;
-        }
-      }, (error) => {
-        document.getElementById('output').innerText = `Error getting location: ${error.message}`;
-      });
-    }
-  </script> -->
 </body>
 </html>
